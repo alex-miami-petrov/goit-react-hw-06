@@ -1,13 +1,13 @@
 import React from "react";
 import s from "./SearchBox.module.css";
 import { useDispatch } from "react-redux";
-import { setStatusFilter } from "../../redux/filtersSlice";
+import { setNameFilter } from "../../redux/filtersSlice";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    dispatch(setStatusFilter(e.target.value));
+    dispatch(setNameFilter(e.target.value));
   };
   return (
     <div className={s.searchBox}>

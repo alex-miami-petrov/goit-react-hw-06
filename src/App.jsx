@@ -11,9 +11,7 @@ import {
   deleteContact,
   selectContacts,
 } from "./redux/contactsSlice";
-import { selectNameFilter, setStatusFilter } from "./redux/filtersSlice";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistor } from "./redux/store";
+import { selectNameFilter, setNameFilter } from "./redux/filtersSlice";
 
 // const initialContacts = [
 //   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
@@ -39,7 +37,7 @@ const App = () => {
   };
 
   const handleFilterChange = (e) => {
-    dispatch(setStatusFilter(e.target.value));
+    dispatch(setNameFilter(e.target.value));
   };
 
   // useEffect(() => {
