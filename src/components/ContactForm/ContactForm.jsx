@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
 import s from "./ContactForm.module.css";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
 const formatPhoneNumber = (number) => {
   const cleaned = number.replace(/\D/g, "");
@@ -26,7 +28,9 @@ const validationSchema = Yup.object({
     .required("Number is required"),
 });
 
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
     const formattedNumber = formatPhoneNumber(values.number);
 
@@ -36,7 +40,7 @@ const ContactForm = ({ onAddContact }) => {
       number: formattedNumber,
     };
 
-    onAddContact(newContact);
+    dispatch(addContact(newContact));
     resetForm();
   };
 
